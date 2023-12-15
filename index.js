@@ -1,8 +1,9 @@
 // Imports the Google Cloud client library
 const {PubSub} = require('@google-cloud/pubsub');
+const dotenv = require('dotenv')
 
 async function quickstart(
-  projectId = 'infraappsandbox', // Your Google Cloud Platform project ID
+  projectId = process.env.PROJECT_ID, // Your Google Cloud Platform project ID
   topicNameOrId = 'my-topic2', // Name for the new topic to create
   subscriptionName = 'my-sub2' // Name for the new subscription to create
 ) {
