@@ -4,8 +4,8 @@ require('dotenv').config()
 
 async function quickstart(
   projectId = process.env.PROJECT_ID, // Your Google Cloud Platform project ID
-  topicNameOrId = 'my-topic2', // Name for the new topic to create
-  subscriptionName = 'my-sub2' // Name for the new subscription to create
+  topicNameOrId = 'New-Topic-1', // Name for the new topic to create
+  subscriptionName = 'New-Topic-1-Sub' // Name for the new subscription to create
 ) {
   // Instantiates a client
   const pubsub = new PubSub({projectId});
@@ -16,6 +16,7 @@ async function quickstart(
 
   // Creates a subscription on that new topic
   const [subscription] = await topic.createSubscription(subscriptionName);
+  console.log(`Subscription ${subscription.name} created.`);
 
   // Receive callbacks for new messages on the subscription
   // subscription.on('message', message => {
