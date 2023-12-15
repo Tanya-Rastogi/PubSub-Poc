@@ -1,6 +1,6 @@
 // Imports the Google Cloud client library
 const {PubSub} = require('@google-cloud/pubsub');
-const dotenv = require('dotenv')
+require('dotenv').config()
 
 async function quickstart(
   projectId = process.env.PROJECT_ID, // Your Google Cloud Platform project ID
@@ -18,18 +18,18 @@ async function quickstart(
   const [subscription] = await topic.createSubscription(subscriptionName);
 
   // Receive callbacks for new messages on the subscription
-  subscription.on('message', message => {
-    console.log('Received message:', message.data.toString());
-    process.exit(0);
-  });
+  // subscription.on('message', message => {
+  //   console.log('Received message:', message.data.toString());
+  //   process.exit(0);
+  // });
 
-  // Receive callbacks for errors on the subscription
-  subscription.on('error', error => {
-    console.error('Received error:', error);
-    process.exit(1);
-  });
+  // // Receive callbacks for errors on the subscription
+  // subscription.on('error', error => {
+  //   console.error('Received error:', error);
+  //   process.exit(1);
+  // });
 
-  // Send a message to the topic
-  topic.publishMessage({data: Buffer.from('Test message!')});
+  // // Send a message to the topic
+  // topic.publishMessage({data: Buffer.from('Test message!')});
 }
 quickstart()
